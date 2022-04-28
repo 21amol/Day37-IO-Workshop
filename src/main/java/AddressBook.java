@@ -112,10 +112,10 @@ public class AddressBook {
         return flag == 1;
     }
 
-    public boolean checkDuplicate(String fname) {
+    public boolean checkDuplicate(String name) {
         int flag = 0;
         for (ContactOfPerson p : contactList) {
-            if (p.getFirstName().equals(fname)) {
+            if (p.getFirstName().equals(name)) {
                 flag = 1;
                 break;
             }
