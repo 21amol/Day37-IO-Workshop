@@ -1,4 +1,8 @@
+import com.opencsv.exceptions.CsvDataTypeMismatchException;
+import com.opencsv.exceptions.CsvRequiredFieldEmptyException;
+import java.io.IOException;
 import java.util.Scanner;
+
 
 public class BookList {
     public static void main(String[] args) {
@@ -19,7 +23,9 @@ public class BookList {
             System.out.println("10.Sort Contact By State");
             System.out.println("11.Write data");
             System.out.println("12.Read data");
-            System.out.println("13.Exit");
+            System.out.println("13.Write Data in CSV file");
+            System.out.println("14.Read data from CSV file");
+            System.out.println("15.Exit");
 
             System.out.println("Enter choice: ");
             int option = sc.nextInt();
@@ -91,6 +97,22 @@ public class BookList {
                     AddressBook.readData(addressBookMain);
                     break;
                 case 13:
+                    try {
+                        AddressBook.writeDataToCSV();
+                    } catch (IOException | CsvDataTypeMismatchException | CsvRequiredFieldEmptyException e) {
+                        e.printStackTrace();
+                    }
+                    break;
+
+                case 14:
+                    try {
+                        AddressBook.readDataUsingCSV();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+
+                    break;
+                case 15:
                     flag = false;
                     break;
             }
